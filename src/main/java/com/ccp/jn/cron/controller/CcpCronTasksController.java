@@ -1,14 +1,14 @@
 package com.ccp.jn.cron.controller;
 
+import java.util.function.Function;
+
 import com.ccp.decorators.CcpJsonRepresentation;
 import com.ccp.exceptions.process.CcpAsyncProcess;
 
 public class CcpCronTasksController {
 
-	public static void main(String[] args) throws Exception {
-		String taskName = args[0];
-		String parameters = args[1];
+	public static void main(Function<CcpJsonRepresentation, CcpJsonRepresentation> jnAsyncBusinessNotifyError, String taskName, String parameters) throws Exception {
 		CcpJsonRepresentation mdParameters = new CcpJsonRepresentation(parameters);
-		CcpAsyncProcess.executeProcess(taskName, mdParameters);
+		CcpAsyncProcess.executeProcess(taskName, mdParameters,jnAsyncBusinessNotifyError);
 	}
 }
